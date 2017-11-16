@@ -1,0 +1,3 @@
+git+git://github.com/cdeldon/simple-logger.git@master
+
+sphinx >= 1.6
