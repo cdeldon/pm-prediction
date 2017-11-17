@@ -16,6 +16,8 @@ class __Settings:
 
         self.__logging_dir = os.path.join(self.__project_root_dir, "logs")
 
+        self.__resources_dir = os.path.join(self.__project_root_dir, "resources")
+
     @property
     def project_root_dir(self):
         return self.__project_root_dir
@@ -31,6 +33,10 @@ class __Settings:
     @property
     def log_dir(self):
         return self.__logging_dir
+
+    @property
+    def resources_dir(self):
+        return self.__resources_dir
 
 
 class LogLevel:

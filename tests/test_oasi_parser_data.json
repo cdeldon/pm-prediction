@@ -1,0 +1,31 @@
+{
+  "locations": [
+    {
+      "code": "auto_43",
+      "coordinates": {
+        "x": 726570,
+        "y": 75023,
+        "z": 202
+      },
+      "name": "Como"
+    },
+    {
+      "code": "auto_48",
+      "coordinates": {
+        "x": 724907,
+        "y": 53993,
+        "z": 212
+      },
+      "name": "Saronno"
+    },
+    {
+      "code": "auto_50",
+      "coordinates": {
+        "x": 706084,
+        "y": 77062,
+        "z": 382
+      },
+      "name": "Varese"
+    }
+  ]
+}

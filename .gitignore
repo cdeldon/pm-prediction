@@ -104,7 +104,9 @@ ENV/
 .idea/
 
 # Data directory
-data/
+data/*
+!data/.gitkeep
 
 #Log dir
-logs/
+logs/*
+!logs/.gitkeep

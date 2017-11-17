@@ -37,7 +37,7 @@ def download_oasi_data(custom_params: dict = None) -> None:
 
     params = {
         "domains": ["air", "meteo"],
-        "years": range(2010, 2018),
+        "years": range(2000, 2018),
         "data_directory": pm.Settings.data_dir,
         "overwrite": False
     }
@@ -80,9 +80,7 @@ def download_oasi_data(custom_params: dict = None) -> None:
             locations = json.loads(locations.text)
 
             for loc in locations:
-                loc_path = os.path.join(feature_path, loc['name'])
-                Logger.debug("Downloading {}/{}/{}".format(
-                    dom, feature["code"], loc["name"]))
+                loc_path = os.path.join(feature_path, loc['name'] + "_" + loc['code'])
                 os.makedirs(loc_path, exist_ok=True)
                 for year in years:
                     csv_file_name = os.path.join(loc_path, str(year) + '.csv')
@@ -90,7 +88,13 @@ def download_oasi_data(custom_params: dict = None) -> None:
                     # If the file already exists, then continue to next data without
                     # overwriting.
                     if not overwrite and os.path.exists(csv_file_name):
+                        Logger.debug("File {} already existing. Skipping to next "
+                                     "file".format(csv_file_name))
                         continue
+
+                    Logger.debug("Requesting {}.{}.{}.{}".format(
+                        dom, feature["code"], loc['name'], year))
+
                     locations = requests.get(
                         'http://www.oasi.ti.ch/web/rest/measure/csv?domain=' +
                         dom + '&resolution=h&parameter=' + feature['code'] + '&from=' +
@@ -100,3 +104,5 @@ def download_oasi_data(custom_params: dict = None) -> None:
                     first_line = locations.text.split('\n', 1)[0]
                     if first_line == '# GENERALE':
                         write_csv_file(csv_file_name, locations)
+                    else:
+                        Logger.debug("Request was not successful!")

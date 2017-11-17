@@ -1,6 +1,6 @@
-from . import download
+from . import oasi
 from .settings import *
 
 __all__ = [
-    "download"
+    "oasi"
 ]

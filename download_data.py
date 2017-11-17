@@ -18,7 +18,7 @@ def check_data_already_downloaded(data_dir: str = None) -> None:
         data_dir = pm.Settings.data_dir
 
     if os.path.exists(data_dir):
-        dirs_in_data = os.listdir(data_dir)
+        dirs_in_data = [d for d in os.listdir(data_dir) if os.path.isdir(d)]
         if len(dirs_in_data) > 0:
             err_msg = "\nData directory {} is not empty: files found:".format(data_dir)
             for file in dirs_in_data:
@@ -32,5 +32,10 @@ if __name__ == '__main__':
     pm.settings.setup_logger(console_log_level=LogLevel.INFO,
                              file_log_level=LogLevel.DEBUG)
 
+    download_params = {
+        "domains": ["air", "meteo"],
+        "years": range(1980, 2018)
+    }
+
     # check_data_already_downloaded()
-    pm.download.download_oasi_data()
+    pm.oasi.download_oasi_data(custom_params=download_params)
