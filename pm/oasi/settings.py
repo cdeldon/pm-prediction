@@ -13,7 +13,7 @@ class Location:
         for key in ["name", "code", "coordinates"]:
             if key not in dictionary:
                 raise RuntimeError("Key {} not in dictionary passed to "
-                                   "Location.".format(key))
+                                   "Location class.".format(key))
         self.name = dictionary["name"]
         self.code = dictionary["code"]
         self.coordinates = dictionary["coordinates"]
@@ -26,6 +26,27 @@ class Location:
                "\n\t   name: {}" \
                "\n\t   code: {}" \
                "\n\t coords: {}".format(self.name, self.code, self.coordinates)
+
+
+class Parameter:
+    def __init__(self, dictionary: dict):
+        for key in ["name", "code", "shortName", "unit"]:
+            if key not in dictionary:
+                raise RuntimeError("Key {} not in dictionary passed to "
+                                   "Parameter class.".format(key))
+        self.name = dictionary["name"]
+        self.code = dictionary["code"]
+        self.short_name = dictionary["shortName"]
+        self.unit = dictionary["unit"]
+
+    def __repr__(self):
+        return "OasiParameter ({})".format(self.short_name)
+
+    def __str__(self):
+        return "OasiParameter:" \
+               "\n\t   name: {}" \
+               "\n\t   code: {}" \
+               "\n\t   unit: {}".format(self.name, self.code, self.unit)
 
 
 class Settings:
@@ -44,12 +65,17 @@ class Settings:
 
         if "locations" not in parsed_settings:
             raise RuntimeError("Could not load 'locations' key from parsed settings.")
-
         self.location_list = parsed_settings["locations"]
+
+        if "parameters" not in parsed_settings:
+            raise RuntimeError("Could not load 'parameters' key from parsed settings.")
+        self.parameter_list = parsed_settings["parameters"]
 
     @staticmethod
     def __settings_hook(dictionary: dict):
         if "coordinates" in dictionary:
             return Location(dictionary)
+        elif "shortName" in dictionary:
+            return Parameter(dictionary)
         else:
             return dictionary

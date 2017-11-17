@@ -26,6 +26,68 @@
         "z": 382
       },
       "name": "Varese"
+    },
+    {
+      "code": "112 01 02",
+      "coordinates": {
+        "x": 719940,
+        "y": 126560,
+        "z": 255
+      },
+      "name": "Moleno A2"
+    },
+    {
+      "code": "525 01 01",
+      "coordinates": {
+        "x": 715430,
+        "y": 106905,
+        "z": 435
+      },
+      "name": "Camignolo A2"
+    }
+  ],
+  "parameters": [
+    {
+      "code": "CO",
+      "name": "Monossido di carbonio",
+      "shortName": "CO",
+      "unit": "Âµg/mÂ³"
+    },
+    {
+      "code": "NO",
+      "name": "Monossido di azoto",
+      "shortName": "NO",
+      "unit": "Âµg/mÂ³"
+    },
+    {
+      "code": "NO2",
+      "name": "Diossido di azoto",
+      "shortName": "NO2",
+      "unit": "Âµg/mÂ³"
+    },
+    {
+        "code": "NOx",
+        "name": "Ossidi di azoto",
+        "shortName": "NOx",
+        "unit": "ppb"
+    },
+    {
+        "code": "PM1",
+        "name": "Particolato < 1Âµm",
+        "shortName": "PM1",
+        "unit": "Âµg/mÂ³"
+    },
+    {
+        "code": "PM2.5",
+        "name": "Particolato < 2.5Âµm",
+        "shortName": "PM2.5",
+        "unit": "Âµg/mÂ³"
+    },
+    {
+        "code": "PM10",
+        "name": "Particolato < 10Âµm",
+        "shortName": "PM10",
+        "unit": "Âµg/mÂ³"
     }
   ]
 }

@@ -1,31 +1,36 @@
 {
   "locations": [
     {
-      "code": "auto_43",
+      "code": "code_01",
       "coordinates": {
-        "x": 726570,
-        "y": 75023,
-        "z": 202
+        "x": 0,
+        "y": 1,
+        "z": 2
       },
-      "name": "Como"
+      "name": "location 1"
     },
     {
-      "code": "auto_48",
+      "code": "code_02",
       "coordinates": {
-        "x": 724907,
-        "y": 53993,
-        "z": 212
+        "x": 3,
+        "y": 4,
+        "z": 5
       },
-      "name": "Saronno"
+      "name": "location 2"
+    }
+  ],
+  "parameters": [
+    {
+      "code": "code_01",
+      "name": "param 01",
+      "shortName": "p 01",
+      "unit": "Âµg/mÂ³"
     },
     {
-      "code": "auto_50",
-      "coordinates": {
-        "x": 706084,
-        "y": 77062,
-        "z": 382
-      },
-      "name": "Varese"
+      "code": "code_02",
+      "name": "param 02",
+      "shortName": "p 02",
+      "unit": "Âµg/mÂ³"
     }
   ]
 }
