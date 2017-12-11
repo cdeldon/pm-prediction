@@ -39,7 +39,9 @@ def download_oasi_data(custom_params: dict = None) -> None:
         "domains": ["air", "meteo"],
         "years": range(2000, 2018),
         "data_directory": pm.Settings.data_dir,
-        "overwrite": False
+        "overwrite": False,
+        "ignore_locations": ["Stabio_16"]  # Ignore this location, as it is downloaded
+        # thorough the Oasi-Client interface which offers multiple temperature sensors.
     }
     params.update(custom_params)
 
@@ -80,6 +82,10 @@ def download_oasi_data(custom_params: dict = None) -> None:
             locations = json.loads(locations.text)
 
             for loc in locations:
+                if loc['name'] + "_" + loc['code'] in params["ignore_locations"]:
+                    Logger.warning("Ignoring {} location".format(loc['name'] + "_" +
+                                                                 loc['code']))
+                    continue
                 loc_path = os.path.join(feature_path, loc['name'] + "_" + loc['code'])
                 os.makedirs(loc_path, exist_ok=True)
                 for year in years:
